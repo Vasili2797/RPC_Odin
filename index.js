@@ -1,41 +1,35 @@
-// Properly Working code
-// const para = document.createElement("p");
-// const node = document.createTextNode("This is new.");
-// para.appendChild(node);
-// const element = document.getElementById("result");
-// element.appendChild(para);
-
-// const secondElement = document.createElement('div');
-// const secondElementText = document.createTextNode("This is the second node");
-// secondElement.appendChild(secondElementText);
-// element.appendChild(secondElement);
-
-
 const resultsDiv = document.getElementById("result");
 const button1 = document.createElement("button");
 const button2 = document.createElement("button");
 const button3 = document.createElement("button");
 const playResult = document.createElement('div');
+let resultSpan = document.createElement('span');
 
-const resultElementText = document.createTextNode(`This is the end result: ${result}`);
+const resultElementText = document.createTextNode('Result: ');
 playResult.appendChild(resultElementText);
+playResult.appendChild(resultSpan);
 
 button1.textContent='Rock';
 button2.textContent='Paper';
 button3.textContent='Scissors';
-// playResult.textContent=resultElementText;
 
 
 button1.addEventListener('click', function(){
-    console.log(playRound('rock', getComputerChoice));
+    result=playRound('rock', getComputerChoice);
+    console.log(result);
+    resultSpan.innerHTML=(result);
 });
 
 button2.addEventListener('click', function(){
-    console.log(playRound('paper', getComputerChoice));
+    result=playRound('paper', getComputerChoice);
+    console.log(result);
+    resultSpan.innerHTML=(result);
 });
 
 button3.addEventListener('click', function(){
-    console.log(playRound('scissors', getComputerChoice));
+    result=playRound('scissors', getComputerChoice);
+    console.log(result);
+    resultSpan.innerHTML=(result);
 });
 
 resultsDiv.appendChild(button1); 
@@ -78,24 +72,5 @@ const playRound=(playerSelection, computerSelection)=>{
 }
 
 const playGame=(playerSelection)=>{
-    // let button1=<button onclick="playRound('rock')">Rock</button>;
-    // let button2=<button onclick="playRound('paper')">Paper</button>;
-    // let button3=<button onclick="playRound('scissors')">Scissors</button>;
-    // return(
-    //     <div>
-    //         <button1/>
-    //         <button2/>
-    //         <button3/>
-    //         <div>{result}</div>
-    //     </div>
-    // );
-    
-    // while(i<5){
-    //     let userInput=prompt(`Plays left: ${5-i}\nPlease Input Rock, paper, or scissors`);
-    //     console.log(playRound(userInput, getComputerChoice));
-    //     i++
-    // }
     console.log('I clicked button 1');
 }
-
-// playGame();
