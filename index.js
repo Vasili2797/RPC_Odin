@@ -5,6 +5,7 @@ const button3 = document.createElement("button");
 const playResult = document.createElement('div');
 let resultSpan = document.createElement('span');
 const restartgameButton = document.createElement('button');
+let scoreDisplayPanel = document.createElement('div');
 
 restartgameButton.textContent='Restart';
 
@@ -19,28 +20,32 @@ button1.textContent='Rock';
 button2.textContent='Paper';
 button3.textContent='Scissors';
 
+playResult.appendChild(scoreDisplayPanel);
+
 
 button1.addEventListener('click', function(){
     result=playRound('rock', getComputerChoice);
     console.log(result);
-    resultSpan.innerHTML=(result);
+    resultSpan.innerHTML=result;
 });
 
 button2.addEventListener('click', function(){
     result=playRound('paper', getComputerChoice);
     console.log(result);
-    resultSpan.innerHTML=(result);
+    resultSpan.innerHTML=result;
 });
 
 button3.addEventListener('click', function(){
     result=playRound('scissors', getComputerChoice);
     console.log(result);
-    resultSpan.innerHTML=(result);
+    resultSpan.innerHTML=result;
 });
 
 restartgameButton.addEventListener('click', function(){
     player1Points=0;
     computer1Points=0;
+    scoreDisplayPanel.innerHTML=`\nPlayer: ${player1Points}\nComputer: ${computer1Points}`;
+    resultSpan.innerHTML='';
     button1.disabled=false;
     button2.disabled=false;
     button3.disabled=false;
@@ -84,8 +89,9 @@ const playRound=(playerSelection, computerSelection)=>{
             computer1Points=computer1Points+1;
         }
     }
-    console.log("Player: "+player1Points);
-    console.log("Computer: "+computer1Points);
+
+    scoreDisplayPanel.innerHTML=`\nPlayer: ${player1Points}\nComputer: ${computer1Points}`;
+
     if(player1Points==5){
         result+="\nPlayer wins the game";
         resultsDiv.appendChild(restartgameButton);
