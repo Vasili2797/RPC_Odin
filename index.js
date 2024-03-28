@@ -4,6 +4,12 @@ const button2 = document.createElement("button");
 const button3 = document.createElement("button");
 const playResult = document.createElement('div');
 let resultSpan = document.createElement('span');
+const restartgameButton = document.createElement('button');
+
+restartgameButton.textContent='Restart';
+
+let player1Points=0;
+let computer1Points=0;
 
 const resultElementText = document.createTextNode('Result: ');
 playResult.appendChild(resultElementText);
@@ -31,6 +37,14 @@ button3.addEventListener('click', function(){
     console.log(result);
     resultSpan.innerHTML=(result);
 });
+
+restartgameButton.addEventListener('click', function(){
+    player1Points=0;
+    computer1Points=0;
+    button1.disabled=false;
+    button2.disabled=false;
+    button3.disabled=false;
+})
 
 resultsDiv.appendChild(button1); 
 resultsDiv.appendChild(button2); 
@@ -64,13 +78,27 @@ const playRound=(playerSelection, computerSelection)=>{
             (playerPlay==='paper' && computerSelection==='rock')||
             (playerPlay==='scissors' && computerSelection==='paper')){
             result='You Win!';
+            player1Points=player1Points+1;
         }else{
             result='You Lose!';
+            computer1Points=computer1Points+1;
         }
+    }
+    console.log("Player: "+player1Points);
+    console.log("Computer: "+computer1Points);
+    if(player1Points==5){
+        result+="\nPlayer wins the game";
+        resultsDiv.appendChild(restartgameButton);
+        button1.disabled=true;
+        button2.disabled=true;
+        button3.disabled=true;
+    }else if(computer1Points==5){
+        result+="\nComputer wins the game";
+        resultsDiv.appendChild(restartgameButton);
+        button1.disabled=true;
+        button2.disabled=true;
+        button3.disabled=true;
     }
     return result;
 }
 
-const playGame=(playerSelection)=>{
-    console.log('I clicked button 1');
-}
